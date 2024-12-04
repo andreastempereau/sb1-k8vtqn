@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORCAS - Token Launch Platform</title>
+    <meta name="description" content="ORCAS is revolutionizing how projects raise capital and how investors participate in the next generation of cryptocurrency tokens." />
+    <style>
+      /* Ensure smooth page load with proper background */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: linear-gradient(135deg, #1a365d 0%, #1e1e24 100%);
+        color: #ffffff;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Add a subtle loading animation */
+      .loading {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      .loaded {
+        opacity: 1;
+      }
+      /* Initial loading animation */
+      .splash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #1a365d 0%, #1e1e24 100%);
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      .splash.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .splash-logo {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Initial loading splash -->
+    <div id="splash" class="splash">
+      <div class="splash-logo">ORCAS</div>
+    </div>
+    
+    <!-- React root -->
+    <div id="root" class="loading"></div>
+    
+    <script>
+      // Handle initial loading animations
+      window.addEventListener('load', () => {
+        // Fade in the main content
+        document.getElementById('root').classList.add('loaded');
+        
+        // Hide splash screen after a short delay
+        setTimeout(() => {
+          document.getElementById('splash').classList.add('hidden');
+        }, 1000);
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
