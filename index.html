@@ -20,13 +20,10 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-      }
-      /* Add a subtle loading animation */
-      .loading {
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
       }
-      .loaded {
+      #root.loaded {
         opacity: 1;
       }
       /* Initial loading animation */
@@ -68,13 +65,14 @@
     </div>
     
     <!-- React root -->
-    <div id="root" class="loading"></div>
+    <div id="root"></div>
     
     <script>
       // Handle initial loading animations
       window.addEventListener('load', () => {
         // Fade in the main content
-        document.getElementById('root').classList.add('loaded');
+        const root = document.getElementById('root');
+        root.classList.add('loaded');
         
         // Hide splash screen after a short delay
         setTimeout(() => {
